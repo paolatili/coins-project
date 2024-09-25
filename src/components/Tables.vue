@@ -19,6 +19,11 @@ fetchCoins();
 const coinFilter = computed(() => {
     return coins.value.filter((coin) => coin.name.toLowerCase().includes(searchTerm.value.toLowerCase()))
 });
+
+const displayInfo = ((coin) => {
+  console.log("Clicked this row", coin)
+})
+
 </script>
 
 <template>
@@ -50,7 +55,7 @@ const coinFilter = computed(() => {
 
                 <tbody class="divide-y divide-gray-700">
                     <tr class="text-base hover:bg-gray-100/10 transition duration-300" v-for="coin in coinFilter"
-                        :key="coin.uuid">
+                        :key="coin.uuid" @click="displayInfo(coin)">
                         <td class="p-4 flex items-center">
                             <p class="mr-2">{{ coin.rank }}.</p>
                             <img :src="coin.iconUrl" :alt="coin.name" class="w-6 h-6 rounded-full mr-1" />
@@ -87,3 +92,4 @@ const coinFilter = computed(() => {
         </div>
     </main>
 </template>
+
