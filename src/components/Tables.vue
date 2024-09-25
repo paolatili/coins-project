@@ -20,8 +20,12 @@ const coinFilter = computed(() => {
     return coins.value.filter((coin) => coin.name.toLowerCase().includes(searchTerm.value.toLowerCase()))
 });
 
+const isPopupOpen = ref(false);
+
 const displayInfo = ((coin) => {
   console.log("Clicked this row", coin)
+  isPopupOpen.value = true
+
 })
 
 </script>
@@ -88,7 +92,6 @@ const displayInfo = ((coin) => {
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </main>
 </template>
